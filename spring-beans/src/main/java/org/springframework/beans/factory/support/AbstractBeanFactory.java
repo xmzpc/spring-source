@@ -307,7 +307,8 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			throws BeansException {
 
 		/**
-		 * 提取对应的beanName，很多同学可能会认为此处直接使用即可，为什么还要进行转换呢，原因在于当bean对象实现FactoryBean接口之后就会变成&beanName，同时如果存在别名，也需要把别名进行转换*/
+		 * 提取对应的beanName，很多同学可能会认为此处直接使用即可，为什么还要进行转换呢，
+		 * 原因在于当bean对象实现FactoryBean接口之后就会变成&beanName，同时如果存在别名，也需要把别名进行转换*/
 		String beanName = transformedBeanName(name);
 		Object bean;
 

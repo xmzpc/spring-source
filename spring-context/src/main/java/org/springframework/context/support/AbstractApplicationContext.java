@@ -590,6 +590,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 				// Register bean processors that intercept bean creation.
 				// 注册bean处理器，这里只是注册功能，真正调用的是getBean方法
+				// 处理PriorityOrdered、Ordered接口，Bean的执行顺序的优先级
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.
@@ -1007,7 +1008,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		beanFactory.freezeConfiguration();
 
 		// Instantiate all remaining (non-lazy-init) singletons.
-		// 实例化剩下的单例对象
+		// 实例化剩下的单例,非懒加载对象
 		beanFactory.preInstantiateSingletons();
 	}
 

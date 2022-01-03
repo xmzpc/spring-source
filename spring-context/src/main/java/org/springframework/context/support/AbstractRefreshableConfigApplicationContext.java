@@ -82,6 +82,7 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 			this.configLocations = new String[locations.length];
 			for (int i = 0; i < locations.length; i++) {
 				// 解析给定路径
+				// 处理占位符 spring-${username}.xml
 				this.configLocations[i] = resolvePath(locations[i]).trim();
 			}
 		}
