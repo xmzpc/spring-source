@@ -21,9 +21,11 @@ import java.io.IOException;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.BeanDefinitionParserDelegate;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextException;
 import org.springframework.lang.Nullable;
+import org.w3c.dom.Element;
 
 /**
  * Base class for {@link org.springframework.context.ApplicationContext}
@@ -134,6 +136,11 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 			// 定制beanFactory，设置相关属性，包括是否允许覆盖同名称的不同定义的对象以及循环依赖
 			customizeBeanFactory(beanFactory);
 			// 初始化documentReader,并进行XML文件读取及解析,默认命名空间的解析，自定义标签的解析
+			// String[] -> String ->Resource[] -> Resource
+			/**
+			 * @see org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader#parseBeanDefinitions(Element, BeanDefinitionParserDelegate)
+			 *
+			 */
 			loadBeanDefinitions(beanFactory);
 			this.beanFactory = beanFactory;
 		}

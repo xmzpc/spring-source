@@ -60,6 +60,12 @@ public interface ResourcePatternResolver extends ResourceLoader {
 	 * for example in the root of all deployed JAR files.
 	 * @see org.springframework.core.io.ResourceLoader#CLASSPATH_URL_PREFIX
 	 */
+
+	/**
+	 * 在所有根目录下搜索文件的伪URL的前缀
+	 * 与ResourceLoader中classpath不同的地方在于，此前缀会在所有的JAR包的根目录下搜索指定文件。
+	 * @see org.springframework.core.io.ResourceLoader#CLASSPATH_URL_PREFIX
+	 */
 	String CLASSPATH_ALL_URL_PREFIX = "classpath*:";
 
 	/**
@@ -67,6 +73,13 @@ public interface ResourcePatternResolver extends ResourceLoader {
 	 * <p>Overlapping resource entries that point to the same physical
 	 * resource should be avoided, as far as possible. The result should
 	 * have set semantics.
+	 * @param locationPattern the location pattern to resolve
+	 * @return the corresponding Resource objects
+	 * @throws IOException in case of I/O errors
+	 */
+	/**
+	 * 返回指定路径下所有的资源对象。
+	 * 返回的对象集合应该有Set的语义，也就是说，对于同一个资源，只应该返回一个资源对象
 	 * @param locationPattern the location pattern to resolve
 	 * @return the corresponding Resource objects
 	 * @throws IOException in case of I/O errors

@@ -1462,6 +1462,7 @@ public class BeanDefinitionParserDelegate {
 			return null;
 		}
 		// 根据命名空间找到对应的NamespaceHandlerspring
+		// 从META-INF中找到spring.handlers找到映射处理类
 		NamespaceHandler handler = this.readerContext.getNamespaceHandlerResolver().resolve(namespaceUri);
 		if (handler == null) {
 			error("Unable to locate Spring NamespaceHandler for XML schema namespace [" + namespaceUri + "]", ele);
